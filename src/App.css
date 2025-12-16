@@ -1,0 +1,215 @@
+/* ===== THEME TOGGLE FIXES ===== */
+
+/* Ensure theme is applied to all elements */
+[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --card-bg: #ffffff;
+  --border-color: #e0e0e0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #f0f0f0;
+  --card-bg: #2d2d2d;
+  --border-color: #444444;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Apply theme colors */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Theme specific styles for Bootstrap components */
+[data-theme="dark"] .navbar {
+  background-color: var(--card-bg) !important;
+  border-bottom: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .card {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .table {
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .table th,
+[data-theme="dark"] .table td {
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .btn-outline-primary {
+  border-color: #4e54c8;
+  color: #4e54c8;
+}
+
+[data-theme="dark"] .btn-outline-primary:hover {
+  background-color: #4e54c8;
+  color: white;
+}
+
+[data-theme="dark"] .text-muted {
+  color: #aaaaaa !important;
+}
+
+/* Modal in dark mode */
+[data-theme="dark"] .modal-content {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .modal-header,
+[data-theme="dark"] .modal-footer {
+  border-color: var(--border-color);
+}
+
+/* Fix for toast notifications in dark mode */
+.Toastify__toast {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border: 1px solid var(--border-color);
+}
+
+/* Pagination in dark mode */
+[data-theme="dark"] .page-link {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .page-item.active .page-link {
+  background-color: #4e54c8;
+  border-color: #4e54c8;
+}
+
+/* Alert in dark mode */
+[data-theme="dark"] .alert-info {
+  background-color: rgba(13, 202, 240, 0.1);
+  border-color: rgba(13, 202, 240, 0.2);
+  color: #0dcaf0;
+}
+
+/* Remove duplicate notification animation */
+@keyframes singleNotification {
+  0% { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+.Toastify__toast-container {
+  animation: singleNotification 0.3s ease;
+}
+
+/* Cart item animation - no duplicate */
+@keyframes cartItemAdd {
+  0% { background-color: rgba(78, 84, 200, 0.1); }
+  100% { background-color: transparent; }
+}
+
+.table tbody tr {
+  animation: cartItemAdd 1s ease;
+}
+
+/* Checkout modal success animation */
+@keyframes successPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.FaCheckCircle {
+  animation: successPulse 2s infinite;
+}
+
+/* Theme toggle button animation */
+@keyframes themeSwitch {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(180deg); }
+}
+
+.theme-toggle-btn:active {
+  animation: themeSwitch 0.3s ease;
+}
+
+/* Ensure proper contrast in both themes */
+[data-theme="light"] .text-dark {
+  color: #333333 !important;
+}
+
+[data-theme="dark"] .text-dark {
+  color: #f0f0f0 !important;
+}
+
+[data-theme="light"] .bg-light {
+  background-color: #f8f9fa !important;
+}
+
+[data-theme="dark"] .bg-light {
+  background-color: #2d2d2d !important;
+}
+
+/* Fix for category buttons */
+[data-theme="dark"] .btn-outline-primary {
+  color: #4e54c8;
+}
+
+[data-theme="dark"] .btn-outline-primary:hover {
+  color: white;
+}
+
+/* Fix for search input */
+[data-theme="dark"] .input-group-text {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+/* App.css or Theme.css */
+/* These classes won't affect the whole site unless applied */
+
+/* For specific dark mode elements */
+.dark-mode .product-card {
+  background-color: #2d2d2d;
+  color: #ffffff;
+  border: 1px solid #404040;
+}
+
+.dark-mode .header {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+/* Sort button - only visible in dark mode */
+.sort-button {
+  display: none; /* Hidden by default */
+}
+
+/* Only show sort button when in dark mode */
+.dark-mode .sort-button {
+  display: flex;
+  background-color: #4a6fa5;
+  color: white;
+}
+
+/* Individual components can opt-in to dark mode */
+.dark-mode-enabled {
+  transition: all 0.3s ease;
+}
+
+.dark-mode .dark-mode-enabled {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
